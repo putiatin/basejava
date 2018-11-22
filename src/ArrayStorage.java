@@ -27,20 +27,12 @@ public class ArrayStorage {
     }
 
     void delete(String uuid) {
-        Resume[] tempArray = new Resume[size];
-
         for (int i = 0; i < size; i++) {
             if (storage[i].uuid.equals(uuid)) {
-                do {
-                    tempArray[i] = storage[i+1];
-                    i++;
-                } while (storage[i] != null);
+                storage[i] = storage[size - 1];
                 size--;
-            } else {
-                tempArray[i] = storage[i];
             }
         }
-        storage = Arrays.copyOf(tempArray, tempArray.length);
     }
 
     /**
